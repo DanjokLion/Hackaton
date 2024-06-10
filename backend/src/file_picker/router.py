@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.config import DATASET_DIR
 from src.file_picker.schema import DatasetItem
 from src.file_picker.utils import save_upload_file
+from fastapi.responses import FileResponse
 import os
 
 router = APIRouter(
@@ -34,3 +35,9 @@ async def upload_dataset(file: UploadFile, session: AsyncSession = Depends(get_a
     # await add_dataset_to_db(item)
 
     await save_upload_file(file, path)
+    
+@router.get('/dataset')
+async def upload_file(
+    file_id:str
+    ):
+    return FileResponse()#pass

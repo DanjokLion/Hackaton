@@ -1,28 +1,22 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-import time
+import asyncio
+from src.database import async_session_factory
 
-engine = create_engine('')
-Session = sessionmaker(bind=engine)
-session = Session()
-
-def update_data():
-    while True:
-        new_data = fetch_new_data()
+class DataBaseController:
+    async def update_data(self):
+        new_data = await self.fetch_new_data()
+        await self.update_database(new_data)
+        await self.update_dashboard()
         
-        update_database(new_data)
-        
-        update_dashboard()
-        
-        time.sleep(28_800)  # обновление раз в 8 часов
+        # await asyncio.sleep(28_800)  # обновление раз в 8 часов
 
-def fetch_new_data():
-    pass
+    async def fetch_new_data(self):
+        pass
 
-def update_database(new_data):
-    pass
+    async def update_database(self,new_data):
+        pass
 
-def update_dashboard():
-    pass
+    async def update_dashboard(self):
+        pass
 
-update_data()
+
+controller = DataBaseController()

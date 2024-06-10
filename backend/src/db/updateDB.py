@@ -18,5 +18,4 @@ class DataBaseController:
     async def update_dashboard(self):
         pass
 
-
 controller = DataBaseController()

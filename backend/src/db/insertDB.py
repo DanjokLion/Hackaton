@@ -57,6 +57,3 @@ async def insert_data_from_csv(filename):
             session.add(data)
 
     await session.commit()
-
-if __name__ == "__main__":
-    insert_data_from_csv('DatasetOrg.csv')

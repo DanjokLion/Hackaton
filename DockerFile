@@ -1,11 +1,10 @@
-# DockerFile fastApi
-FROM python:3.9-slim
+FROM python:3.11
 
 #Set working directory
 WORKDIR /src
 
 #Copy requirements.txt
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 
 #Install requirements
 RUN pip install -r requirements.txt
@@ -14,4 +13,5 @@ RUN pip install -r requirements.txt
 COPY . .
 
 #Command to run
+CMD alembic upgrade head
 CMD uvicorn src.main:app --host 0.0.0.0 --port 8000
